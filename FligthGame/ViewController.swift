@@ -11,9 +11,33 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        print(CGFloat.screenHeigth/CGFloat.screenWidth)
+        animateBackground()
     }
+    
+    func animateBackground()
+    {
+        let backgroundImage = UIImage(named:"sea")!
 
+        // UIImageView 1
+        let backgroundImageView1 = UIImageView(image: backgroundImage)
+        backgroundImageView1.frame = CGRect(x: 0, y: 0, width: .screenWidth, height: .screenHeigth)
+        backgroundImageView1.contentMode = .scaleAspectFill
+        self.view.addSubview(backgroundImageView1)
+
+        // UIImageView 2
+        let backgroundImageView2 = UIImageView(image: backgroundImage)
+        backgroundImageView2.frame = CGRect(x: 0, y: -.screenHeigth, width: .screenWidth, height: .screenHeigth)
+        backgroundImageView2.contentMode = .scaleAspectFill
+        self.view.addSubview(backgroundImageView2)
+
+        // Animate background
+        UIView.animate(withDuration: 6.0, delay: 0.0, options: [.repeat, .curveLinear], animations: {
+            backgroundImageView1.frame = backgroundImageView1.frame.offsetBy(dx: 0.0, dy: 1 * backgroundImageView1.frame.size.height)
+            backgroundImageView2.frame = backgroundImageView2.frame.offsetBy(dx: 0.0, dy: 1 * backgroundImageView1.frame.size.height)
+            }, completion: nil)
+    }
 
 }
 
