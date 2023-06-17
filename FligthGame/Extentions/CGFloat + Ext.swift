@@ -12,7 +12,9 @@ extension CGFloat {
     static let screenHeigth = UIScreen.main.bounds.height
     static let planeStep: CGFloat = 15
     static let planeSize: CGFloat = 60
+    static let planeYPosition = .screenHeigth - .planeSize * 2
     static let buttonSize: CGFloat = 50
     static let ufoSize: CGFloat = 50
     static let ufoStart: CGFloat = -ufoSize
+    static let ufoTrip = screenHeigth + ufoSize
 }

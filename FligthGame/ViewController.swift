@@ -10,7 +10,15 @@ import UIKit
 final class ViewController: UIViewController {
     
     private var centerXPlane: CGFloat!
-    
+    var mainPosition: CGFloat! {
+        didSet {
+            let deadRange = (mainPosition ?? 0) - CGFloat.ufoSize...(mainPosition ?? 0) + CGFloat.ufoSize
+            if deadRange.contains(centerXPlane) {
+                crashAnimate()
+            }
+            
+        }
+    }
     //MARK: - UI elements
     private var plane: UIImageView = {
         let imageVIew = UIImageView()
@@ -32,7 +40,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         setupVC()
         setupButtons()
-        UFO().animatedUFO(for: self)
+        UFO(delegate: self).animatedUFO(for: self, enemy: .plane)
     }
     
     //MARK: - private
@@ -63,7 +71,7 @@ final class ViewController: UIViewController {
     @objc private func movingPlane(_ sender: UIButton) {
         switch sender {
         case leftButton:
-            if centerXPlane < .screenWidth / 8 + .planeSize / 2 {
+            if centerXPlane < .screenWidth / 8 + .planeSize / 2{
                 crashAnimate()
                 return
             }
@@ -82,9 +90,9 @@ final class ViewController: UIViewController {
     }
     
     private func crashAnimate() {
-        plane.image = UIImage(named: "explosion")
         leftButton.isEnabled = false
         rightButton.isEnabled = false
+        plane.image = UIImage(named: "explosion")
         Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
             self.plane.image = UIImage(named: "plane")
             self.leftButton.isEnabled = true
@@ -99,4 +107,12 @@ final class ViewController: UIViewController {
             self.plane.center.x = self.centerXPlane
         }
     }
+}
+
+//MARK: - Delegate extention
+extension ViewController: PositionSender {
+    func sendPosition(position: CGFloat) {
+        mainPosition = position
+    }
+
 }
