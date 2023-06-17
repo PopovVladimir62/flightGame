@@ -8,6 +8,11 @@
 import UIKit
 
 extension CGFloat {
-    static let screenWidth: CGFloat = UIScreen.main.bounds.width
-    static let screenHeigth: CGFloat = UIScreen.main.bounds.height
+    static let screenWidth = UIScreen.main.bounds.width
+    static let screenHeigth = UIScreen.main.bounds.height
+    static let planeStep: CGFloat = 15
+    static let planeSize: CGFloat = 60
+    static let buttonSize: CGFloat = 50
+    static let ufoSize: CGFloat = 50
+    static let ufoStart: CGFloat = -ufoSize
 }

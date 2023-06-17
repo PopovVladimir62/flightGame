@@ -7,37 +7,96 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    
+    private var centerXPlane: CGFloat!
+    
+    //MARK: - UI elements
+    private var plane: UIImageView = {
+        let imageVIew = UIImageView()
+        return imageVIew
+    }()
+    
+    private var leftButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    private var rightButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        print(CGFloat.screenHeigth/CGFloat.screenWidth)
-        animateBackground()
+        setupVC()
+        setupButtons()
+        UFO().animatedUFO(for: self)
     }
     
-    func animateBackground()
-    {
-        let backgroundImage = UIImage(named:"sea")!
-
-        // UIImageView 1
-        let backgroundImageView1 = UIImageView(image: backgroundImage)
-        backgroundImageView1.frame = CGRect(x: 0, y: 0, width: .screenWidth, height: .screenHeigth)
-        backgroundImageView1.contentMode = .scaleAspectFill
-        self.view.addSubview(backgroundImageView1)
-
-        // UIImageView 2
-        let backgroundImageView2 = UIImageView(image: backgroundImage)
-        backgroundImageView2.frame = CGRect(x: 0, y: -.screenHeigth, width: .screenWidth, height: .screenHeigth)
-        backgroundImageView2.contentMode = .scaleAspectFill
-        self.view.addSubview(backgroundImageView2)
-
-        // Animate background
-        UIView.animate(withDuration: 6.0, delay: 0.0, options: [.repeat, .curveLinear], animations: {
-            backgroundImageView1.frame = backgroundImageView1.frame.offsetBy(dx: 0.0, dy: 1 * backgroundImageView1.frame.size.height)
-            backgroundImageView2.frame = backgroundImageView2.frame.offsetBy(dx: 0.0, dy: 1 * backgroundImageView1.frame.size.height)
-            }, completion: nil)
+    //MARK: - private
+    private func setupVC() {
+        view.backgroundColor = .white
+        Background().animateBackground(for: self)
+        Plane().customizePlane(for: plane)
+        centerXPlane = plane.center.x
+        view.addSubview(plane)
     }
-
+    
+    private func setupButtons() {
+        leftButton.frame = CGRect(x: .screenWidth/8, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
+        leftButton.setImage(UIImage(systemName: "arrowshape.left.fill"), for: .normal)
+        leftButton.tintColor = .systemGray
+        leftButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
+        leftButton.addTarget(self, action: #selector(movingPlane), for: .touchUpInside)
+        view.addSubview(leftButton)
+        
+        rightButton.frame = CGRect(x: .screenWidth - .screenWidth/8 - .buttonSize, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
+        rightButton.setImage(UIImage(systemName: "arrowshape.right.fill"), for: .normal)
+        rightButton.tintColor = .systemGray
+        rightButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
+        rightButton.addTarget(self, action: #selector(movingPlane), for: .touchUpInside)
+        view.addSubview(rightButton)
+    }
+    
+    @objc private func movingPlane(_ sender: UIButton) {
+        switch sender {
+        case leftButton:
+            if centerXPlane < .screenWidth / 8 + .planeSize / 2 {
+                crashAnimate()
+                return
+            }
+            centerXPlane -= .planeStep
+            updatePlaneXPosition()
+        case rightButton:
+            if centerXPlane > .screenWidth - .screenWidth / 8 - .planeSize / 2 + .planeStep {
+                crashAnimate()
+                return
+            }
+            centerXPlane += .planeStep
+            updatePlaneXPosition()
+        default:
+            break
+        }
+    }
+    
+    private func crashAnimate() {
+        plane.image = UIImage(named: "explosion")
+        leftButton.isEnabled = false
+        rightButton.isEnabled = false
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+            self.plane.image = UIImage(named: "plane")
+            self.leftButton.isEnabled = true
+            self.rightButton.isEnabled = true
+            self.plane.center.x = .screenWidth / 2
+            self.centerXPlane = self.plane.center.x
+        }
+    }
+    
+    private func updatePlaneXPosition() {
+        UIView.animate(withDuration: 0.3) {
+            self.plane.center.x = self.centerXPlane
+        }
+    }
 }
-
