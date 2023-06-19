@@ -6,7 +6,7 @@
 //
 
 protocol PositionSender: AnyObject{
-    func sendPosition(position: CGFloat)
+    func crash(enemyXPosition: CGFloat)
 }
 
 import UIKit
@@ -15,12 +15,12 @@ enum Enemies {
     case plane
 }
 
-class UFO {
+class EnemiesVariety {
     
     weak var delegate: PositionSender?
     var ufoXposition: CGFloat? {
         didSet {
-            self.delegate?.sendPosition(position: ufoXposition ?? 0)
+            self.delegate?.crash(enemyXPosition: ufoXposition ?? 0)
         }
     }
     
@@ -40,10 +40,10 @@ class UFO {
             ufo.layer.shadowOffset = CGSize(width: 5, height: 5)
             ufo.layer.shadowOpacity = 0.7
             ufo.layer.shadowRadius = 5
-            ufo.frame = CGRect(x: CGFloat.random(in: CGFloat.screenWidth / 8...CGFloat.screenWidth - CGFloat.screenWidth / 8 - .ufoSize  ), y: .ufoStart, width: .ufoSize, height: .ufoSize)
+            ufo.frame = CGRect(x: CGFloat.random(in: CGFloat.screenWidth / 8...CGFloat.screenWidth - CGFloat.screenWidth / 8 - .enemySize  ), y: .enemyStart, width: .enemySize, height: .enemySize)
             viewController.view.addSubview(ufo)
-            let timeX = 5 * (CGFloat.planeYPosition / CGFloat.ufoTrip)
-            let timeY = 5 * ((CGFloat.planeYPosition + .planeSize) / CGFloat.ufoTrip)
+            let timeX = 5 * (CGFloat.planeYPosition / CGFloat.enemyTrip)
+            let timeY = 5 * ((CGFloat.planeYPosition + .planeSize) / CGFloat.enemyTrip)
             DispatchQueue.main.asyncAfter(deadline: .now() + timeX) {
                 self.ufoXposition = ufo.layer.presentation()?.frame.midX ?? 0
             }

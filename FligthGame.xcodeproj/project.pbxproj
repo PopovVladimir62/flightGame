@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E748D16E2A3E23EC0097D0B5 /* UFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D16D2A3E23EC0097D0B5 /* UFO.swift */; };
+		E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */; };
+		E748D1712A3F7D370097D0B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E748D1702A3F7D370097D0B5 /* SnapKit */; };
+		E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D1722A3F82C70097D0B5 /* PlaneShot.swift */; };
 		E774DECB2A3DE19700CB7254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECA2A3DE19700CB7254 /* AppDelegate.swift */; };
 		E774DECD2A3DE19700CB7254 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */; };
 		E774DECF2A3DE19700CB7254 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECE2A3DE19700CB7254 /* ViewController.swift */; };
@@ -19,7 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E748D16D2A3E23EC0097D0B5 /* UFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UFO.swift; sourceTree = "<group>"; };
+		E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesVariety.swift; sourceTree = "<group>"; };
+		E748D1722A3F82C70097D0B5 /* PlaneShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneShot.swift; sourceTree = "<group>"; };
 		E774DEC72A3DE19700CB7254 /* FligthGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FligthGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E774DECA2A3DE19700CB7254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E748D1712A3F7D370097D0B5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +70,9 @@
 				E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */,
 				E774DECE2A3DE19700CB7254 /* ViewController.swift */,
 				E774DEE32A3E068B00CB7254 /* Plane.swift */,
-				E748D16D2A3E23EC0097D0B5 /* UFO.swift */,
+				E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */,
 				E774DEE12A3E04F500CB7254 /* Background.swift */,
+				E748D1722A3F82C70097D0B5 /* PlaneShot.swift */,
 				E774DEDE2A3DE5A500CB7254 /* Extentions */,
 				E774DED32A3DE19800CB7254 /* Assets.xcassets */,
 				E774DED52A3DE19800CB7254 /* LaunchScreen.storyboard */,
@@ -100,6 +105,9 @@
 			dependencies = (
 			);
 			name = FligthGame;
+			packageProductDependencies = (
+				E748D1702A3F7D370097D0B5 /* SnapKit */,
+			);
 			productName = FligthGame;
 			productReference = E774DEC72A3DE19700CB7254 /* FligthGame.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +136,9 @@
 				Base,
 			);
 			mainGroup = E774DEBE2A3DE19700CB7254;
+			packageReferences = (
+				E748D16F2A3F7D370097D0B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E774DEC82A3DE19700CB7254 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,12 +165,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */,
 				E774DECF2A3DE19700CB7254 /* ViewController.swift in Sources */,
 				E774DECB2A3DE19700CB7254 /* AppDelegate.swift in Sources */,
 				E774DEE02A3DE5BB00CB7254 /* CGFloat + Ext.swift in Sources */,
 				E774DECD2A3DE19700CB7254 /* SceneDelegate.swift in Sources */,
 				E774DEE42A3E068B00CB7254 /* Plane.swift in Sources */,
-				E748D16E2A3E23EC0097D0B5 /* UFO.swift in Sources */,
+				E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */,
 				E774DEE22A3E04F500CB7254 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E748D16F2A3F7D370097D0B5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E748D1702A3F7D370097D0B5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E748D16F2A3F7D370097D0B5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E774DEBF2A3DE19700CB7254 /* Project object */;
 }

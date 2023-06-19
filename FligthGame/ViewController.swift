@@ -6,19 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ViewController: UIViewController {
     
-    private var centerXPlane: CGFloat!
-    var mainPosition: CGFloat! {
-        didSet {
-            let deadRange = (mainPosition ?? 0) - CGFloat.ufoSize...(mainPosition ?? 0) + CGFloat.ufoSize
-            if deadRange.contains(centerXPlane) {
-                crashAnimate()
-            }
-            
-        }
-    }
+    var centerXPlane: CGFloat!
+
     //MARK: - UI elements
     private var plane: UIImageView = {
         let imageVIew = UIImageView()
@@ -35,40 +28,21 @@ final class ViewController: UIViewController {
         return button
     }()
     
+    private var fireButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
         setupButtons()
-        UFO(delegate: self).animatedUFO(for: self, enemy: .plane)
+        EnemiesVariety(delegate: self).animatedUFO(for: self, enemy: .plane)
     }
     
     //MARK: - private
-    private func setupVC() {
-        view.backgroundColor = .white
-        Background().animateBackground(for: self)
-        Plane().customizePlane(for: plane)
-        centerXPlane = plane.center.x
-        view.addSubview(plane)
-    }
-    
-    private func setupButtons() {
-        leftButton.frame = CGRect(x: .screenWidth/8, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
-        leftButton.setImage(UIImage(systemName: "arrowshape.left.fill"), for: .normal)
-        leftButton.tintColor = .systemGray
-        leftButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
-        leftButton.addTarget(self, action: #selector(movingPlane), for: .touchUpInside)
-        view.addSubview(leftButton)
-        
-        rightButton.frame = CGRect(x: .screenWidth - .screenWidth/8 - .buttonSize, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
-        rightButton.setImage(UIImage(systemName: "arrowshape.right.fill"), for: .normal)
-        rightButton.tintColor = .systemGray
-        rightButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
-        rightButton.addTarget(self, action: #selector(movingPlane), for: .touchUpInside)
-        view.addSubview(rightButton)
-    }
-    
-    @objc private func movingPlane(_ sender: UIButton) {
+    @objc private func actionPlane(_ sender: UIButton) {
         switch sender {
         case leftButton:
             if centerXPlane < .screenWidth / 8 + .planeSize / 2{
@@ -84,9 +58,42 @@ final class ViewController: UIViewController {
             }
             centerXPlane += .planeStep
             updatePlaneXPosition()
+        case fireButton:
+            PlaneShot().fire(for: self)
         default:
             break
         }
+    }
+    
+    private func setupVC() {
+        view.backgroundColor = .white
+        Background().animateBackground(for: self)
+        Plane().customizePlane(for: plane)
+        centerXPlane = plane.center.x
+        view.addSubview(plane)
+    }
+    
+    private func setupButtons() {
+        leftButton.frame = CGRect(x: .screenWidth/8, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
+        leftButton.setImage(UIImage(systemName: "arrowshape.left.fill"), for: .normal)
+        leftButton.tintColor = .systemGray
+        leftButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
+        leftButton.addTarget(self, action: #selector(actionPlane), for: .touchUpInside)
+        view.addSubview(leftButton)
+        
+        rightButton.frame = CGRect(x: .screenWidth - .screenWidth/8 - .buttonSize, y: .screenHeigth - .buttonSize * 1.5, width: .buttonSize, height: .buttonSize)
+        rightButton.setImage(UIImage(systemName: "arrowshape.right.fill"), for: .normal)
+        rightButton.tintColor = .systemGray
+        rightButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
+        rightButton.addTarget(self, action: #selector(actionPlane), for: .touchUpInside)
+        view.addSubview(rightButton)
+        
+        fireButton.frame = CGRect(x: .screenWidth - .buttonSize, y: .screenHeigth - .buttonSize * 2.5, width: .buttonSize, height: .buttonSize)
+        fireButton.setImage(UIImage(systemName: "flame.circle.fill"), for: .normal)
+        fireButton.tintColor = .systemRed
+        fireButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
+        fireButton.addTarget(self, action: #selector(actionPlane), for: .touchUpInside)
+        view.addSubview(fireButton)
     }
     
     private func crashAnimate() {
@@ -111,8 +118,11 @@ final class ViewController: UIViewController {
 
 //MARK: - Delegate extention
 extension ViewController: PositionSender {
-    func sendPosition(position: CGFloat) {
-        mainPosition = position
+    func crash(enemyXPosition: CGFloat) {
+        let deadRange = enemyXPosition - CGFloat.enemySize...enemyXPosition + CGFloat.enemySize
+        if deadRange.contains(centerXPlane){
+            crashAnimate()
+        }
     }
 
 }

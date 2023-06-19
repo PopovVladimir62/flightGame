@@ -14,7 +14,8 @@ extension CGFloat {
     static let planeSize: CGFloat = 60
     static let planeYPosition = .screenHeigth - .planeSize * 2
     static let buttonSize: CGFloat = 50
-    static let ufoSize: CGFloat = 50
-    static let ufoStart: CGFloat = -ufoSize
-    static let ufoTrip = screenHeigth + ufoSize
+    static let enemySize: CGFloat = 50
+    static let enemyStart: CGFloat = -enemySize
+    static let enemyTrip = screenHeigth + enemySize
+    static let shotSize: CGFloat = 8
 }
