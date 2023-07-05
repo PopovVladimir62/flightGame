@@ -8,16 +8,65 @@
 import UIKit
 import SnapKit
 
-final class ViewController: UIViewController {
+final class GameViewController: UIViewController {
     
     var centerXPlane: CGFloat!
-
+    var lifes = 3 {
+        didSet {
+            switch lifes {
+            case 2:
+                lifesLabel.text = "❤ ❤"
+            case 1:
+                lifesLabel.text = "❤"
+            case 0:
+                lifesLabel.text = ""
+            default:
+                lifesLabel.text = "❤ ❤ ❤"
+            }
+        }
+    }
     //MARK: - UI elements
     private var plane: UIImageView = {
         let imageVIew = UIImageView()
         imageVIew.isUserInteractionEnabled = true
         return imageVIew
     }()
+    
+    private var scoreLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: .screenWidth / 2 - .scoreAndLifesLabelWidth / 2,
+                                          y: .scoreAndLifesYposition,
+                                          width: .scoreAndLifesLabelWidth,
+                                          height: .scoreAndLifesLabelHeight))
+
+        label.text = "Score: 0"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var lifesLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: .screenWidth / 2 + .scoreAndLifesLabelWidth / 1.25,
+                                          y: .scoreAndLifesYposition,
+                                          width: .scoreAndLifesLabelWidth,
+                                          height: .scoreAndLifesLabelHeight))
+        switch lifes {
+        case 2:
+            label.text = "❤ ❤"
+        case 1:
+            label.text = "❤"
+        case 0:
+            label.text = ""
+        default:
+            label.text = "❤ ❤ ❤"
+        }
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.textColor = .red
+        
+        return label
+    }()
+    
     
     //MARK: - lifecycle
     override func viewDidLoad() {
@@ -28,6 +77,10 @@ final class ViewController: UIViewController {
         makeTapGestureForPlane()
     }
     
+    deinit {
+        print("Game over")
+    }
+
     //MARK: - private
     
     @objc private func moveThePlane(_ sender: UIPanGestureRecognizer) {
@@ -46,6 +99,7 @@ final class ViewController: UIViewController {
         PlaneShot().fire(for: self)
     }
     
+    
     private func makePanGestureForPlane() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveThePlane))
         plane.addGestureRecognizer(panGesture)
@@ -62,27 +116,32 @@ final class ViewController: UIViewController {
         Plane().customizePlane(for: plane)
         centerXPlane = plane.center.x
         view.addSubview(plane)
+        view.addSubview(scoreLabel)
+        view.addSubview(lifesLabel)
     }
     
     private func crashAnimate() {
         plane.image = UIImage(named: "explosion")
+
+        lifes -= 1
         if let recognizers = plane.gestureRecognizers {
             for recognizer in recognizers {
                 plane.removeGestureRecognizer(recognizer)
             }
         }
+        print(lifes)
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
             self.makePanGestureForPlane()
             self.makeTapGestureForPlane()
             self.plane.image = UIImage(named: "plane")
-//            self.plane.center.x = .screenWidth / 2
-//            self.centerXPlane = self.plane.center.x
+            self.plane.center.x = .screenWidth / 2
+            self.centerXPlane = self.plane.center.x
         }
     }
 }
 
 //MARK: - Delegate extention
-extension ViewController: PositionSender {
+extension GameViewController: PositionSenderdelegate {
     func crash(enemyXPosition: CGFloat) {
         let deadRange = enemyXPosition - CGFloat.enemySize...enemyXPosition + CGFloat.enemySize
         if deadRange.contains(centerXPlane){

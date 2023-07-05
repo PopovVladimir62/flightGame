@@ -5,7 +5,7 @@
 //  Created by Владимир on 17.06.2023.
 //
 
-protocol PositionSender: AnyObject{
+protocol PositionSenderdelegate: AnyObject{
     func crash(enemyXPosition: CGFloat)
 }
 
@@ -17,14 +17,14 @@ enum Enemies {
 
 class EnemiesVariety {
     
-    weak var delegate: PositionSender?
+    weak var delegate: PositionSenderdelegate?
     var ufoXposition: CGFloat? {
         didSet {
             self.delegate?.crash(enemyXPosition: ufoXposition ?? 0)
         }
     }
     
-    init(delegate: PositionSender) {
+    init(delegate: PositionSenderdelegate) {
         self.delegate = delegate
     }
     

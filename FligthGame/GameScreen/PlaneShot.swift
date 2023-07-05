@@ -8,7 +8,7 @@
 import UIKit
 
 final class PlaneShot {
-    func fire(for viewController: ViewController) {
+    func fire(for viewController: GameViewController) {
         let shot = UIImageView(frame: CGRect(x: viewController.centerXPlane, y: .screenHeigth - .planeSize * 2, width: .shotSize, height: .shotSize))
         shot.backgroundColor = .red
         shot.layer.cornerRadius = .shotSize / 2

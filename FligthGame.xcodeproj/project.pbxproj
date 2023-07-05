@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71FBF272A553C3700EF04C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FBF262A553C3700EF04C3 /* MainViewController.swift */; };
+		E71FBF292A55490F00EF04C3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */; };
 		E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */; };
 		E748D1712A3F7D370097D0B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E748D1702A3F7D370097D0B5 /* SnapKit */; };
 		E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D1722A3F82C70097D0B5 /* PlaneShot.swift */; };
 		E774DECB2A3DE19700CB7254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECA2A3DE19700CB7254 /* AppDelegate.swift */; };
 		E774DECD2A3DE19700CB7254 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */; };
-		E774DECF2A3DE19700CB7254 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECE2A3DE19700CB7254 /* ViewController.swift */; };
+		E774DECF2A3DE19700CB7254 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DECE2A3DE19700CB7254 /* GameViewController.swift */; };
 		E774DED42A3DE19800CB7254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E774DED32A3DE19800CB7254 /* Assets.xcassets */; };
 		E774DED72A3DE19800CB7254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E774DED52A3DE19800CB7254 /* LaunchScreen.storyboard */; };
 		E774DEE02A3DE5BB00CB7254 /* CGFloat + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DEDF2A3DE5BB00CB7254 /* CGFloat + Ext.swift */; };
@@ -21,12 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E71FBF262A553C3700EF04C3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesVariety.swift; sourceTree = "<group>"; };
 		E748D1722A3F82C70097D0B5 /* PlaneShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneShot.swift; sourceTree = "<group>"; };
 		E774DEC72A3DE19700CB7254 /* FligthGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FligthGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E774DECA2A3DE19700CB7254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E774DECE2A3DE19700CB7254 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E774DECE2A3DE19700CB7254 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E774DED32A3DE19800CB7254 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E774DED62A3DE19800CB7254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E774DED82A3DE19800CB7254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E71FBF2A2A554A3A00EF04C3 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		E71FBF2B2A554A6F00EF04C3 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E774DECE2A3DE19700CB7254 /* GameViewController.swift */,
+				E774DEE32A3E068B00CB7254 /* Plane.swift */,
+				E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */,
+				E774DEE12A3E04F500CB7254 /* Background.swift */,
+				E748D1722A3F82C70097D0B5 /* PlaneShot.swift */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		E71FBF2C2A554A9500EF04C3 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E71FBF262A553C3700EF04C3 /* MainViewController.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
 		E774DEBE2A3DE19700CB7254 = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +100,9 @@
 			children = (
 				E774DECA2A3DE19700CB7254 /* AppDelegate.swift */,
 				E774DECC2A3DE19700CB7254 /* SceneDelegate.swift */,
-				E774DECE2A3DE19700CB7254 /* ViewController.swift */,
-				E774DEE32A3E068B00CB7254 /* Plane.swift */,
-				E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */,
-				E774DEE12A3E04F500CB7254 /* Background.swift */,
-				E748D1722A3F82C70097D0B5 /* PlaneShot.swift */,
+				E71FBF2C2A554A9500EF04C3 /* MainScreen */,
+				E71FBF2B2A554A6F00EF04C3 /* GameScreen */,
+				E71FBF2A2A554A3A00EF04C3 /* SettingsScreen */,
 				E774DEDE2A3DE5A500CB7254 /* Extentions */,
 				E774DED32A3DE19800CB7254 /* Assets.xcassets */,
 				E774DED52A3DE19800CB7254 /* LaunchScreen.storyboard */,
@@ -166,11 +196,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */,
-				E774DECF2A3DE19700CB7254 /* ViewController.swift in Sources */,
+				E774DECF2A3DE19700CB7254 /* GameViewController.swift in Sources */,
 				E774DECB2A3DE19700CB7254 /* AppDelegate.swift in Sources */,
+				E71FBF292A55490F00EF04C3 /* SettingsViewController.swift in Sources */,
 				E774DEE02A3DE5BB00CB7254 /* CGFloat + Ext.swift in Sources */,
 				E774DECD2A3DE19700CB7254 /* SceneDelegate.swift in Sources */,
 				E774DEE42A3E068B00CB7254 /* Plane.swift in Sources */,
+				E71FBF272A553C3700EF04C3 /* MainViewController.swift in Sources */,
 				E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */,
 				E774DEE22A3E04F500CB7254 /* Background.swift in Sources */,
 			);
