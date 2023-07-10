@@ -8,7 +8,7 @@
 import UIKit
 
 extension CGFloat {
-    //GameViewController values
+    //MARK: - GameViewController values
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeigth = UIScreen.main.bounds.height
     static let planeStep: CGFloat = 15
@@ -22,8 +22,14 @@ extension CGFloat {
     static let scoreAndLifesYposition: CGFloat = 50
     static let scoreAndLifesLabelWidth: CGFloat = 100
     static let scoreAndLifesLabelHeight: CGFloat = 20
-    //MainViewController values
+    
+    //MARK: - MainViewController values
     static let mainButtonHeight = screenHeigth / 12
     static let mainButtonWidth = screenWidth / 2
     
+    //MARK: - Settings values
+    static let leftInset: CGFloat = 30
+    static let topInset: CGFloat = 100
+    static let spasingBetweenStackviews: CGFloat = 30
+    static let spasingInsideStackview: CGFloat = 15
 }

@@ -32,6 +32,17 @@ final class MainViewController: UIViewController {
         return button
     }()
     
+    private lazy var scoreButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = .mainButtonHeight / 2
+        button.setTitle("Records", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: .mainButtonHeight / 2)
+        button.addTarget(self, action: #selector(openRecords), for: .touchUpInside)
+        
+        return button
+    }()
+    
     //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +61,16 @@ final class MainViewController: UIViewController {
         navigationController?.pushViewController(settings, animated: true)
     }
     
+    @objc private func openRecords() {
+        let scoreRecords = ScoreViewController()
+        navigationController?.pushViewController(scoreRecords, animated: true)
+    }
+    
     //MARK: - private
     private func setupVC() {
         view.backgroundColor = .white
         view.addSubview(startGameButton)
+        view.addSubview(scoreButton)
         view.addSubview(settingsButton)
     }
     
@@ -65,11 +82,19 @@ final class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(CGFloat.mainButtonHeight * 3)
         }
-        settingsButton.snp.makeConstraints { make in
+        
+        scoreButton.snp.makeConstraints { make in
             make.width.equalTo(CGFloat.mainButtonWidth)
             make.height.equalTo(CGFloat.mainButtonHeight)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(CGFloat.mainButtonHeight * 4.5)
+        }
+        
+        settingsButton.snp.makeConstraints { make in
+            make.width.equalTo(CGFloat.mainButtonWidth)
+            make.height.equalTo(CGFloat.mainButtonHeight)
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(CGFloat.mainButtonHeight * 6)
         }
     }
 }

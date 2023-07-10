@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 
 final class GameViewController: UIViewController {
+
+    var speedRate: Double = 0.8
+    var enemySkin: Enemies = .plane
+    var userScore = 0
     
     var centerXPlane: CGFloat!
     var lifes = 3 {
@@ -35,7 +39,7 @@ final class GameViewController: UIViewController {
     private var scoreLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: .screenWidth / 2 - .scoreAndLifesLabelWidth / 2,
                                           y: .scoreAndLifesYposition,
-                                          width: .scoreAndLifesLabelWidth,
+                                          width: .scoreAndLifesLabelWidth * 1.2,
                                           height: .scoreAndLifesLabelHeight))
 
         label.text = "Score: 0"
@@ -72,7 +76,7 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
-        EnemiesVariety(delegate: self).animatedUFO(for: self, enemy: .plane)
+        EnemiesVariety(delegate: self).animatedUFO(for: self, enemy: enemySkin, speedRate: speedRate)
         makePanGestureForPlane()
         makeTapGestureForPlane()
     }
@@ -99,7 +103,6 @@ final class GameViewController: UIViewController {
         PlaneShot().fire(for: self)
     }
     
-    
     private func makePanGestureForPlane() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveThePlane))
         plane.addGestureRecognizer(panGesture)
@@ -111,8 +114,10 @@ final class GameViewController: UIViewController {
     }
     
     private func setupVC() {
+        speedRate = store.gameSettings.speedRate
+        enemySkin = store.gameSettings.enemyVariety
         view.backgroundColor = .white
-        Background().animateBackground(for: self)
+        Background().animateBackground(for: self, speedRate: speedRate)
         Plane().customizePlane(for: plane)
         centerXPlane = plane.center.x
         view.addSubview(plane)
@@ -121,8 +126,8 @@ final class GameViewController: UIViewController {
     }
     
     private func crashAnimate() {
+        guard lifes > 1 else {navigationController?.popViewController(animated: true); saveScore(); return}
         plane.image = UIImage(named: "explosion")
-
         lifes -= 1
         if let recognizers = plane.gestureRecognizers {
             for recognizer in recognizers {
@@ -138,15 +143,25 @@ final class GameViewController: UIViewController {
             self.centerXPlane = self.plane.center.x
         }
     }
+    
+    private func saveScore() {
+        if userScore > store.usersSettings.last?.score ?? 0 {
+            store.usersSettings.last?.score = userScore
+            store.saveUsers()
+        }
+        userScore = 0
+    }
 }
 
 //MARK: - Delegate extention
 extension GameViewController: PositionSenderdelegate {
-    func crash(enemyXPosition: CGFloat) {
+    func crash(enemyXPosition: CGFloat, enemiesQuantity: Int) {
         let deadRange = enemyXPosition - CGFloat.enemySize...enemyXPosition + CGFloat.enemySize
         if deadRange.contains(centerXPlane){
             crashAnimate()
         }
+        userScore = Int(Double(enemiesQuantity) * 10.0 / speedRate)
+        scoreLabel.text = "Score: \(userScore)"
     }
 
 }

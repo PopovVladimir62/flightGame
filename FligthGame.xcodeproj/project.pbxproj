@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E71FBF272A553C3700EF04C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FBF262A553C3700EF04C3 /* MainViewController.swift */; };
 		E71FBF292A55490F00EF04C3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */; };
+		E71FBF2E2A558F5D00EF04C3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71FBF2D2A558F5D00EF04C3 /* Settings.swift */; };
 		E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */; };
 		E748D1712A3F7D370097D0B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E748D1702A3F7D370097D0B5 /* SnapKit */; };
 		E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D1722A3F82C70097D0B5 /* PlaneShot.swift */; };
@@ -20,11 +21,17 @@
 		E774DEE02A3DE5BB00CB7254 /* CGFloat + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DEDF2A3DE5BB00CB7254 /* CGFloat + Ext.swift */; };
 		E774DEE22A3E04F500CB7254 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DEE12A3E04F500CB7254 /* Background.swift */; };
 		E774DEE42A3E068B00CB7254 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774DEE32A3E068B00CB7254 /* Plane.swift */; };
+		E7DBD5632A56BD5B00A3AD64 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DBD5622A56BD5B00A3AD64 /* SettingsStore.swift */; };
+		E7DBD5652A56C45B00A3AD64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DBD5642A56C45B00A3AD64 /* User.swift */; };
+		E7DBD5672A5C01D000A3AD64 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DBD5662A5C01D000A3AD64 /* ScoreViewController.swift */; };
+		E7DBD56A2A5C045200A3AD64 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DBD5692A5C045200A3AD64 /* ScoreTableViewCell.swift */; };
+		E7DBD56C2A5C04B500A3AD64 /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DBD56B2A5C04B500A3AD64 /* UIView + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E71FBF262A553C3700EF04C3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E71FBF2D2A558F5D00EF04C3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E748D16D2A3E23EC0097D0B5 /* EnemiesVariety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesVariety.swift; sourceTree = "<group>"; };
 		E748D1722A3F82C70097D0B5 /* PlaneShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneShot.swift; sourceTree = "<group>"; };
 		E774DEC72A3DE19700CB7254 /* FligthGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FligthGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +44,11 @@
 		E774DEDF2A3DE5BB00CB7254 /* CGFloat + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat + Ext.swift"; sourceTree = "<group>"; };
 		E774DEE12A3E04F500CB7254 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		E774DEE32A3E068B00CB7254 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		E7DBD5622A56BD5B00A3AD64 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		E7DBD5642A56C45B00A3AD64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E7DBD5662A5C01D000A3AD64 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		E7DBD5692A5C045200A3AD64 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
+		E7DBD56B2A5C04B500A3AD64 /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				E71FBF282A55490F00EF04C3 /* SettingsViewController.swift */,
+				E71FBF2D2A558F5D00EF04C3 /* Settings.swift */,
+				E7DBD5642A56C45B00A3AD64 /* User.swift */,
+				E7DBD5622A56BD5B00A3AD64 /* SettingsStore.swift */,
+				E7DBD5682A5C01D600A3AD64 /* ScoreScreen */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -115,8 +131,18 @@
 			isa = PBXGroup;
 			children = (
 				E774DEDF2A3DE5BB00CB7254 /* CGFloat + Ext.swift */,
+				E7DBD56B2A5C04B500A3AD64 /* UIView + Ext.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		E7DBD5682A5C01D600A3AD64 /* ScoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E7DBD5662A5C01D000A3AD64 /* ScoreViewController.swift */,
+				E7DBD5692A5C045200A3AD64 /* ScoreTableViewCell.swift */,
+			);
+			path = ScoreScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,15 +221,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DBD5652A56C45B00A3AD64 /* User.swift in Sources */,
 				E748D1732A3F82C70097D0B5 /* PlaneShot.swift in Sources */,
+				E7DBD56C2A5C04B500A3AD64 /* UIView + Ext.swift in Sources */,
 				E774DECF2A3DE19700CB7254 /* GameViewController.swift in Sources */,
 				E774DECB2A3DE19700CB7254 /* AppDelegate.swift in Sources */,
 				E71FBF292A55490F00EF04C3 /* SettingsViewController.swift in Sources */,
+				E7DBD5632A56BD5B00A3AD64 /* SettingsStore.swift in Sources */,
 				E774DEE02A3DE5BB00CB7254 /* CGFloat + Ext.swift in Sources */,
+				E7DBD5672A5C01D000A3AD64 /* ScoreViewController.swift in Sources */,
 				E774DECD2A3DE19700CB7254 /* SceneDelegate.swift in Sources */,
 				E774DEE42A3E068B00CB7254 /* Plane.swift in Sources */,
+				E7DBD56A2A5C045200A3AD64 /* ScoreTableViewCell.swift in Sources */,
 				E71FBF272A553C3700EF04C3 /* MainViewController.swift in Sources */,
 				E748D16E2A3E23EC0097D0B5 /* EnemiesVariety.swift in Sources */,
+				E71FBF2E2A558F5D00EF04C3 /* Settings.swift in Sources */,
 				E774DEE22A3E04F500CB7254 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +379,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FligthGame/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "сделайте селфи";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -378,6 +411,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FligthGame/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "сделайте селфи";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

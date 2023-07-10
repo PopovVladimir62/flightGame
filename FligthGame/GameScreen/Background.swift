@@ -9,7 +9,7 @@ import UIKit
 
 final class Background {
     
-    func animateBackground(for viewController: UIViewController)
+    func animateBackground(for viewController: UIViewController, speedRate: Double)
     {
         let backgroundImage = UIImage(named:"reaver")!
 
@@ -26,7 +26,7 @@ final class Background {
         viewController.view.addSubview(backgroundImageView2)
 
         // Animate background
-        UIView.animate(withDuration: 6.0, delay: 0.0, options: [.repeat, .curveLinear], animations: {
+        UIView.animate(withDuration: 6.0 * speedRate, delay: 0.0, options: [.repeat, .curveLinear], animations: {
             backgroundImageView1.frame = backgroundImageView1.frame.offsetBy(dx: 0.0, dy: backgroundImageView1.frame.size.height)
             backgroundImageView2.frame = backgroundImageView2.frame.offsetBy(dx: 0.0, dy: backgroundImageView1.frame.size.height)
             }, completion: nil)
