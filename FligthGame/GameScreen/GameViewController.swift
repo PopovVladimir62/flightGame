@@ -13,6 +13,7 @@ final class GameViewController: UIViewController {
     var speedRate: Double = 0.8
     var enemySkin: Enemies = .plane
     var userScore = 0
+    var isCrashed = false
     
     var centerXPlane: CGFloat!
     var lifes = 3 {
@@ -126,6 +127,8 @@ final class GameViewController: UIViewController {
     }
     
     private func crashAnimate() {
+        guard isCrashed == false else {return}
+        isCrashed = true
         guard lifes > 1 else {navigationController?.popViewController(animated: true); saveScore(); return}
         plane.image = UIImage(named: "explosion")
         lifes -= 1
@@ -134,13 +137,13 @@ final class GameViewController: UIViewController {
                 plane.removeGestureRecognizer(recognizer)
             }
         }
-        print(lifes)
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
             self.makePanGestureForPlane()
             self.makeTapGestureForPlane()
             self.plane.image = UIImage(named: "plane")
             self.plane.center.x = .screenWidth / 2
             self.centerXPlane = self.plane.center.x
+            self.isCrashed = false
         }
     }
     
